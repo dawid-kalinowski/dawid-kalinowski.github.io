@@ -17,6 +17,10 @@ Brakujące elementy:
 - Sekcja artystyczna koła: Tam będą zamieszczane wszelakie inicjatywy muzyczne jakie uda nam się zorganizować. Może muzyka polecana przez nas. Może sprzęt muzyczny polecany przez nas.
 - Zrealizowane projekty: po kliknięciu w dany projekt, wyświetli się strona z opisaniem projektu, kto nad nim pracował, co robił, oraz repo do niego
 
+#### Jak wygląda strona na komputerze:
 ![Strona](ss_strony.jpeg)
+
+#### Jak wygląda strona na telefonie:
+![Strona](ss_mobilny_strony.jpg)
 
 

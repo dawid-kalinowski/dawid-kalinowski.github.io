@@ -86,6 +86,7 @@ a:hover {
 }
 
 .left-background {
+  z-index: 0;
   margin-left: 1vw;
   display: flex;
   flex-direction: column;
@@ -93,6 +94,7 @@ a:hover {
 }
 
 .right-background {
+  z-index: 0;
   margin-right: 1vw;
   display: flex;
   flex-direction: column;
@@ -103,7 +105,7 @@ a:hover {
 .background-image {
   opacity: 0.7;
   margin-top: 1vw;
-  height: 33vh;
+  width: 18vw;
   border-radius: 1vw;
 }
 
@@ -186,7 +188,7 @@ a:hover {
   background-color: #007bff;
   color: #fff;
   text-decoration: none;
-  border: 0.3vh solid #333;
+  border: 0.2vw solid #333;
   border-radius: 0.5vw;
   transition: background-color 0.3s, transform 0.3s;
 }
@@ -216,7 +218,7 @@ a:hover {
   margin-bottom: 1vh;
   text-align: center;
   text-shadow: 0.1vw 0.1vw 0.2vw rgba(0, 0, 0, 0.2);
-  -webkit-text-stroke: 0.15vh black;
+  -webkit-text-stroke: 0.15vw black;
 }
 
 
