@@ -97,7 +97,7 @@ a:hover {
   display: flex;
   flex-direction: column;
   position: absolute;
-  right: 0px;
+  right: 0;
 }
 
 .background-image {
@@ -168,7 +168,7 @@ a:hover {
 
 .member-link {
   margin: 0;
-  font-size: 20px;
+  font-size: 1.2vw;
   text-decoration: none;
   color: #006fd6;
   transition: color 0.3s, font-size 0.3s;
@@ -176,17 +176,18 @@ a:hover {
 
 .member-link:hover {
   color: #ff0;
-  font-size: 25px;
+  font-size: 1.6vw;
 }
 
 .contact-button {
+  font-size: 1vw;
   display: inline-block;
-  padding: 10px 20px;
+  padding: 0.6vw 1.5vw;
   background-color: #007bff;
   color: #fff;
   text-decoration: none;
-  border: 2px solid #333;
-  border-radius: 10px;
+  border: 0.3vh solid #333;
+  border-radius: 0.5vw;
   transition: background-color 0.3s, transform 0.3s;
 }
 
@@ -202,24 +203,29 @@ a:hover {
   margin-right: 1vh;
 }
 
+.our-team {
+  font-size: 2vh;
+}
+
 .section-title {
-  font-size: 50px;
+  font-size: 3vw;
   font-weight: bold;
   color: #8fff33;
-  padding: 10px 20px;
-  margin-top: 30px;
-  margin-bottom: 30px;
+  padding: 1vh 2vh;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
   text-align: center;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-  -webkit-text-stroke: 1px black;
+  text-shadow: 0.1vw 0.1vw 0.2vw rgba(0, 0, 0, 0.2);
+  -webkit-text-stroke: 0.15vh black;
 }
 
 
 
 .project-list {
+  font-size: 2vh;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 10px;
+  grid-gap: 1vw;
   list-style: none;
 }
 
@@ -238,8 +244,7 @@ a:hover {
 
 
 footer {
-  margin-top: auto;
-  height: 40px;
+  font-size: 1.6vh;
   background: linear-gradient(135deg,  #333333,#555555);
   color: white;
   text-align: center;
@@ -247,10 +252,10 @@ footer {
 
 
 @keyframes rainbow {
-  0% { text-shadow: 0px 0px 1vh rgb(255, 0, 0); }
-  25% { text-shadow: 0px 0px 1vh rgb(255, 255, 0); }
-  50% { text-shadow: 0px 0px 1vh rgb(0, 255, 0); }
-  75% { text-shadow: 0px 0px 1vh rgb(0, 0, 255); }
-  100% { text-shadow: 0px 0px 1vh rgb(255, 0, 255); }
+  0% { text-shadow: 0 0 1vh rgb(255, 0, 0); }
+  25% { text-shadow: 0 0 1vh rgb(255, 255, 0); }
+  50% { text-shadow: 0 0 1vh rgb(0, 255, 0); }
+  75% { text-shadow: 0 0 1vh rgb(0, 0, 255); }
+  100% { text-shadow: 0 0 1vh rgb(255, 0, 255); }
 }
 
