@@ -123,6 +123,10 @@ a:hover {
   text-align: center;
 }
 
+.our-team {
+  font-size: 2vh;
+}
+
 .left-section ul {
   list-style: none;
   padding: 0;
@@ -140,6 +144,8 @@ a:hover {
   font-family: Arial, sans-serif;
   font-size: 1vw;
 }
+
+
 
 .left-section strong {
   display: block;
@@ -205,9 +211,7 @@ a:hover {
   margin-right: 1vh;
 }
 
-.our-team {
-  font-size: 2vh;
-}
+
 
 .section-title {
   font-size: 3vw;
@@ -260,4 +264,8 @@ footer {
   75% { text-shadow: 0 0 1vh rgb(0, 0, 255); }
   100% { text-shadow: 0 0 1vh rgb(255, 0, 255); }
 }
+
+
+
+
 
