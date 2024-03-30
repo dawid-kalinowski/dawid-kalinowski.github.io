@@ -3,6 +3,7 @@ const naturalNotes = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
 const sharpNotes = ['A#', 'C#', 'D#', 'F#', 'G#'];
 let selectedNotes = [];
 let recentNotesArray = [];
+let interval = 2;
 
 // create a checkbox for each note
 const checkboxesContainer = document.getElementById('checkboxes-container');
@@ -43,17 +44,20 @@ form.addEventListener('submit', function (event) {
 function selectNaturalNotes() {
     notes.forEach(note => {
         document.getElementById(note).checked = naturalNotes.includes(note);
+        startButton.disabled = false;
     });
 }
 
 function selectSharpNotes() {
     notes.forEach(note => {
         document.getElementById(note).checked = sharpNotes.includes(note);
+        startButton.disabled = false;
     });
 }
 function selectAllNotes() {
     notes.forEach(note => {
         document.getElementById(note).checked = true;
+        startButton.disabled = false;
     });
 }
 
@@ -69,9 +73,16 @@ function displayRandomNote() {
 
 // set an interval 
 function startDisplayingNotes() {
-    intervalId = setInterval(displayRandomNote, 2000);
-}
+    const intervalInput = document.getElementById('interval');
+    const intervalValue = parseFloat(intervalInput.value);
 
+    if (isNaN(intervalValue) || !Number.isFinite(intervalValue)) {
+        alert("Wprowadź prawidłowe  dane");
+        return;
+    }
+
+    intervalId = setInterval(displayRandomNote, intervalValue * 1000);
+}
 // disable "start" button, if at least 2 notes aren't selected
 function checkSelectedNotes() {
     const checkboxes = form.querySelectorAll('input[type="checkbox"]:checked');
