@@ -237,11 +237,14 @@ a:hover {
 
 .project-item {
   text-align: center;
+  display: flex;
+  justify-content: left;
+  align-items: center;
 }
 
 
 .project-img {
-  height: 25vw;
+  height: auto;
   width: 25vw;
 }
 

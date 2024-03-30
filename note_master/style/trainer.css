@@ -1,0 +1,12 @@
+.trainer {
+    color: rgb(255, 45, 192);   
+    font-size: 100px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+
+}
+
+.settings {
+text-align: center;
+}
