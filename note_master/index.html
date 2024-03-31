@@ -1,75 +1,86 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Trener nut</title>
-	<link rel="icon" href="icon.png" type="image/png">
-	<link href='http://fonts.googleapis.com/css?family=Alike' rel='stylesheet'>
-	<link href="style/tuner.css" rel="stylesheet">
-	<link href="style/trainer.css" rel="stylesheet">
-	<link href="style/style.css" rel="stylesheet">
-	<link href="style/mobile-styles.css" rel="stylesheet">
-
-
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>NaN++</title>
+  <link rel="icon" href="icon.png" type="image/png">
+  <link rel="stylesheet" href="tuner/style.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link href="mobile-style.css" rel="stylesheet">
 </head>
 
 <body>
 
-	<div class="tuner">
 
 
-		<div class="div-switch">
-			<div>Stroik Off/On</div>
-			<div>
-				<label class="switch">
-					<input type="checkbox" id="pitchToggle" onclick="toggleTuner()">
-					<span class="slider round"></span>
-				</label>
-			</div>
-		</div>
+  <div class="tuner">
 
-		<div id="detector" class="vague off">
-			<div class="pitch"><span id="pitch">--</span>Hz</div>
-			<div class="note"><span id="note">-</span></div>
-			<canvas id="output" width=300 height=42></canvas>
-			<div id="detune"><span id="detune_amt">--</span><span id="flat">cents &#9837;</span><span id="sharp">cents
-					&#9839;</span></div>
-		</div>
-	</div>
+    <canvas class="frequency-bars"></canvas>
+    <div class="meter">
+      <div class="meter-dot"></div>
+      <div class="meter-pointer"></div>
+    </div>
+    <div class="notes">
+      <div class="notes-list"></div>
+      <div class="frequency">
+        <span>Hz</span>
+      </div>
+    </div>
+    <div class="a4">A<sub>4</sub> = <span>440</span> Hz</div>
+    <label class="auto">
+      Auto
+      <input type="checkbox" checked />
+    </label>
 
-
-
-
-	<div class="notes">
-		<div class="recent-notes-container">
-			<div id="recent-notes"></div>
-		</div>
-		<div class="trainer"></div>
-	</div>
+  </div>
 
 
 
-
-	<div class="settings">
-		<p>Wybierz dźwięki do ćwiczenia:</p>
-		<form id="music-form">
-			<div id="checkboxes-container"></div>
-			<label for="interval">Interwał (w sekundach): </label>
-			<input type="number" id="interval" name="interval" min="0.5" max="10" step="0.1" value="2">
-			<button type="submit" disabled>Start</button>
-		</form>
-		<button onclick="stopDisplayingNotes()">Stop</button>
-		<button onclick="selectAllNotes()">Zaznacz wszystkie dźwięki</button>
-		<button onclick="selectNaturalNotes()">Tylko naturalne dźwięki</button>
-		<button onclick="selectSharpNotes()">Tylko dźwięki z krzyżykami</button>
-	</div>
+  <div class="notes-to-play">
+  </div>
 
 
-	<script src="script/trainer.js"></script>
-	<script src="script/pitchdetect.js"></script>
+
+  <div class="settings">
+    <form id="noteForm">
+      <!-- loop to generate button for each note -->
+      <script>
+        const notes = ['A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#'];
+        notes.forEach(note => {
+          document.write(`
+              <label>
+                <input type="checkbox" name="note" value="${note}" style="display: none;" />
+                <button type="button" onclick="toggleNote('${note}')" class="note-button" value="${note}">${note}</button>
+              </label>
+            `);
+        });
+      </script>
+    </form>
+
+    <button onclick="selectAllNaturalNotes()">nat</button>
+    <button onclick="selectAllSharpNotes()">sharp</button>
+    <button onclick="selectAllNotes()">all</button>
+    <button onclick="unselectAllNotes()">clear</button>
+    <button class="display-notes" onclick="displayRandomNote(1)">Submit</button>
+    <div id="selectedNotes"></div>
+  </div>
+
+
+
+
+
+  <script src="settings.js"></script>
+  <script src="notes-to-play.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aubiojs@0.1.1/build/aubio.min.js"></script>
+  <script src="tuner/tuner.js"></script>
+  <script src="tuner/meter.js"></script>
+  <script src="tuner/frequency-bars.js"></script>
+  <script src="tuner/notes.js"></script>
+  <script src="tuner/app.js"></script>
 </body>
 
 </html>
