@@ -1,33 +1,37 @@
 body {
-    background-color: #0f0f0f;
-    font-family: sans-serif;
-    color: #f1f1f1;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+  background-color: #0f0f0f;
+  font-family: sans-serif;
+  color: #f1f1f1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }
 
 body > div {
-    /* border: solid 1px rgb(119, 119, 119); */
+  /* border: solid 1px rgb(119, 119, 119); */
 }
 
 .display-notes {
-  margin-left: 500px;
+margin-left: 500px;
 }
 .note-button {
-  background-color: gray;
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  margin: 5px;
-  cursor: pointer;
-  border-radius: 5px;
+background-color: gray;
+border: none;
+color: white;
+padding: 10px 20px;
+margin: 5px;
+cursor: pointer;
+border-radius: 5px;
 }
 
 .note-button.selected {
-  background-color: green;
+background-color: green;
 }
 
 .notes-to-play {
-    font-size: 100px;
-    text-align: center;
+  font-size: 100px;
+  text-align: center;
+}
+
+#intervalInput {
+  width: 50px;
 }
