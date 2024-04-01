@@ -3,6 +3,10 @@
     color: #f1f1f1;
 }
 
+body.dark-mode{
+    background-color: #121212;
+}
+
 #mode-toggle {
     position: absolute;
     top: 1vh;
