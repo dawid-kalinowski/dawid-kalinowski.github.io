@@ -4,16 +4,31 @@ document.addEventListener('DOMContentLoaded', function () {
     submitButton.disabled = true; // disable the submit button by default
 });
 
+// when nointerval is checked, disable intervalinput
+document.getElementById('noInterval').addEventListener('change', function () {
+    document.getElementById('intervalInput').disabled = this.checked;
+});
+
+
 // function to select or unselect a specific note to later display it or not
 function toggleNote(note) {
     const button = document.querySelector(`button[value="${note}"]`);
     const checkbox = document.querySelector(`input[value="${note}"]`);
+
+    button.disabled = true;
+
+    setTimeout(function () {
+        button.disabled = false;
+    }, 100);
+
     button.classList.toggle('selected');
     checkbox.checked = !checkbox.checked;
 
-    // Enable the submit button if at least 2 notes are selected
-    const checkboxes = document.querySelectorAll('input[name="note"]:checked');
-    submitButton.disabled = checkboxes.length < 2;
+    const checkedNotes = Array.from(document.querySelectorAll('input[name="note"]:checked')).map(input => input.value);
+    console.log(checkedNotes);
+
+    // disable the start button if there are less than 2 notes selected
+    submitButton.disabled = checkedNotes.length < 2;
 }
 
 // function to select notes based on a filter condition
@@ -33,11 +48,11 @@ function selectNotes(filterCondition) {
 }
 
 function selectAllSharpNotes() {
-    selectNotes(value => value.endsWith('#'));
+    selectNotes(value => value.endsWith('♯'));
 }
 
 function selectAllNaturalNotes() {
-    selectNotes(value => !value.endsWith('#'));
+    selectNotes(value => !value.endsWith('♯'));
 }
 
 function selectAllNotes() {
