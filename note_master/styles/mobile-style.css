@@ -2,6 +2,7 @@
 
     body {
         display: inline;
+        width: 100vw;
     }
 
     .note {
@@ -41,13 +42,15 @@
         margin-top: 400px;
         position: absolute;
         width: 100vw;
+        overflow-x: hidden;
     }
 
+    .settings.hidden {
+        display: none;
+    }
 
-    /* Initially hide the settings panel */
     .settings:not(.show-settings) {
         right: -100vw;
-        /* Ensure it's off-screen initially */
     }
 
     .settings.show-settings {

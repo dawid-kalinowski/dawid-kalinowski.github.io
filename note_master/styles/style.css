@@ -76,9 +76,8 @@ body {
     transition: right 0.3s ease;
 }
 
-/* Initially hide the settings panel */
 .settings:not(.show-settings) {
-    right: -20vw; /* Ensure it's off-screen initially */
+    right: -20vw;
 }
 
 .settings.show-settings {
