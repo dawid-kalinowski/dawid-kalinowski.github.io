@@ -84,4 +84,9 @@
     .next-notes {
         font-size: 8vw;
     }
+
+    
+.start-stop>button {
+    font-size: 3vh;
+}
 }
