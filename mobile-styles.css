@@ -1,59 +1,70 @@
 @media only screen and (max-width: 768px) {
 
-    .logo {
-        height: 10vw;
-      }
-      
-
-    .header-title {
-        font-size: 2.2vw;
-        margin-left: 1vw;
-      }
-
-    .header-name {
-        font-size: 3.2vw;
-        margin-left: 1vw;
-    }
-
-    .right-side {
-        margin-right: 1em;
-    }
-
-    .right-side a {
-        font-size: 2.2vw;
-        margin-left: 0;
-    }
-    .left-section li {
-        font-size: 3vw;
-    }
-  
-    .github-link {
-      font-size: 2vh;
-      width: 8vh;
-    }
-
-    .member-link {
-        font-size: 2vh;
-
-      }
-
-    .email {
-        font-size: 1vh;
-    }
-
-      .contact-button {
-        font-size: 1vh;
-      }
-
-      .section-title {
-        font-size: 5vw;
-      }
-
-      @keyframes rainbow {
-        0% { text-shadow: 0 0 1vw rgb(255, 0, 0); }
-        25% { text-shadow: 0 0 1vw rgb(255, 255, 0); }
-        50% { text-shadow: 0 0 1vw rgb(0, 255, 0); }
-        75% { text-shadow: 0 0 1vw rgb(0, 0, 255); }
-        100% { text-shadow: 0 0 1vw rgb(255, 0, 255); }
-      }
+  body {
+      display: inline;
   }
+
+  .note {
+      font-size: 15vw;
+      padding-right: 5vw;
+      padding-left: 1vw;
+  }
+
+  .notes {
+      position: absolute;
+      width: 50vw;
+      top: 130px;
+      left: 50px;
+  }
+
+
+  .notes div+div {
+      margin-top: -10px;
+  }
+
+  .meter {
+      left: 90px;
+      top: 40px;
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 5vh auto;
+  }
+
+  .frequency {
+      font-size: 5vw;
+      top: 200px;
+  }
+
+
+  .settings {
+      margin-top: 150px;
+      width: 100vw;
+  }
+
+  .display-notes {
+      position: relative;
+      margin-left: 0;
+  }
+
+  .notes-to-play {
+      height: 20vh;
+      width: 100vw;
+      margin-top: 230px;
+  }
+
+  .frequency-bars {
+      height: 0;
+  }
+
+  .current-note {
+      font-size: 30vw;
+  }
+
+  .previous-notes {
+      font-size: 5vw;
+  }
+
+  .next-notes {
+      font-size: 8vw;
+  }
+}
