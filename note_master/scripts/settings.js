@@ -1,5 +1,5 @@
 let submitButton = document.querySelector('.display-notes');
-
+let withOctave = false;
 document.addEventListener('DOMContentLoaded', function () {
     submitButton.disabled = false; // enable the submit button by default
 });
@@ -7,6 +7,11 @@ document.addEventListener('DOMContentLoaded', function () {
 // when nointerval is checked, disable intervalinput
 document.getElementById('noInterval').addEventListener('change', function () {
     document.getElementById('intervalInput').disabled = this.checked;
+});
+
+document.getElementById('withOctave').addEventListener('change', function () {
+    document.getElementById('octaveInput').disabled = !this.checked;
+    withOctave = this.checked;
 });
 
 

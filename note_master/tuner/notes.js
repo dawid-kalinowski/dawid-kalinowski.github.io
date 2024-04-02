@@ -73,23 +73,29 @@ Notes.prototype.clearActive = function () {
   }
 };
 
-Notes.prototype.update = function (note) {
+Notes.prototype.update = function (note) { // get currently played note and octave
   if (note.value in this.$notesMap) {
     this.active(this.$notesMap[note.value]);
     this.$frequency.childNodes[0].textContent = parseFloat(
       note.frequency
     ).toFixed(1);
-    // console.log("Currently played note:", this.$notesMap[note.value].dataset.name);
 
-    // custom event with the currently played note
+    const currentlyPlayingNote = this.$notesMap[note.value].dataset.name;
+    const currentlyPlayingOctave = this.$notesMap[note.value].dataset.octave;
+
+    console.log(currentlyPlayingNote + currentlyPlayingOctave);
+
+    // and emit an event
     const event = new CustomEvent('noteChanged', {
       detail: {
-        currentNotePlaying: this.$notesMap[note.value].dataset.name
+        currentNotePlaying: currentlyPlayingNote,
+        currentOctavePlaying: currentlyPlayingOctave
       }
     });
     document.dispatchEvent(event);
   }
 };
+
 
 Notes.prototype.toggleAutoMode = function () {
   if (!this.isAutoMode) {
