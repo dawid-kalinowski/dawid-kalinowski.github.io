@@ -111,17 +111,20 @@ function getPreviousNotes() {
 
 function setCurrentNoteNav(note) {
     const currentNoteNav = document.querySelector(`.${CURRENT_NOTE_CLASS}`);
-    currentNoteNav.innerHTML = `<nav>${note}</nav>`;
+    const noteHtml = note.replace('♯', '<span class="sharp-symbol">♯</span>');
+    currentNoteNav.innerHTML = `<nav>${noteHtml}</nav>`;
 }
 
 function setNextNotesNav(string) {
     const nextNotesNav = document.querySelector(`.${NEXT_NOTES_CLASS}`);
-    nextNotesNav.textContent = string;
+    const noteHtml = string.replaceAll('♯', '<span class="sharp-symbol">♯</span>');
+    nextNotesNav.innerHTML = `<nav>${noteHtml}</nav>`;
 }
 
 function setPreviousNotesNav(string) {
     const previousNotesNav = document.querySelector(`.${PREVIOUS_NOTES_CLASS}`);
-    previousNotesNav.textContent = string;
+    const noteHtml = string.replaceAll('♯', '<span class="sharp-symbol">♯</span>');
+    previousNotesNav.innerHTML = `<nav>${noteHtml}</nav>`;
 }
 
 function revertColorOfCurrentNote() {

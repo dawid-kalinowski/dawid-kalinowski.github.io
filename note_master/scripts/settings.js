@@ -1,7 +1,7 @@
 let submitButton = document.querySelector('.display-notes');
 
 document.addEventListener('DOMContentLoaded', function () {
-    submitButton.disabled = true; // disable the submit button by default
+    submitButton.disabled = false; // enable the submit button by default
 });
 
 // when nointerval is checked, disable intervalinput

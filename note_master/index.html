@@ -18,7 +18,7 @@
 </head>
 
 <body>
-
+  <button id="mode-toggle"><i id="mode-icon" class="fas fa-sun"></i></button>
 
 
   <div class="tuner">
@@ -58,10 +58,11 @@
       <script>
         const notes = ['C', 'C♯', 'D', 'D♯', 'E', 'F', 'F♯', 'G', 'G♯', 'A', 'A♯', 'B'];
         notes.forEach(note => {
+          const noteHtml = note.replace('♯', '<span class="sharp-symbol">♯</span>');
           document.write(`
               <label>
-                <input type="checkbox" name="note" value="${note}" style="display: none;" />
-                <button type="button" onclick="toggleNote('${note}')" class="note-button" value="${note}">${note}</button>
+                <input type="checkbox" name="note" value="${note}" style="display: none; " checked />
+                <button type="button" onclick="toggleNote('${note}')" class="note-button selected" value="${note}">${noteHtml}</button>
               </label>
             `);
         });
@@ -78,9 +79,13 @@
       <input type="checkbox" id="noInterval"> Zmień dźwięk po zagraniu dobrze
       <span class="checkmark"></span>
     </label>
+  </div>
+  <div></div>
+  <div></div>
+  <div class="start-stop">
     <button class="display-notes" onclick="startProgram()">Start</button>
     <button class="display-notes" onclick="stopDisplayingNotes()">Stop</button>
-    <button id="mode-toggle"><i id="mode-icon" class="fas fa-sun"></i></button>
+    <button class="display-notes" id="toggleSettings">Ustawienia</button>
   </div>
 
 
@@ -90,6 +95,7 @@
   <script src="scripts/settings.js"></script>
   <script src="scripts/displaying-notes.js"></script>
   <script src="scripts/playing-notes.js"></script>
+  <script src="scripts/toggle-settings.js"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
   <script src="https://cdn.jsdelivr.net/npm/aubiojs@0.1.1/build/aubio.min.js"></script>
