@@ -1,23 +1,18 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const settingsPanel = document.querySelector('.settings');
     const toggleSettingsButton = document.getElementById('toggleSettings');
 
-    // hide the settings panel by default
-    settingsPanel.style.display = 'none';
-
-    // toggle settings panel visibility when the button is clicked
-    toggleSettingsButton.addEventListener('click', function() {
-        if (settingsPanel.style.display === 'none') {
-            settingsPanel.style.display = 'flex';
+    toggleSettingsButton.addEventListener('click', function () {
+        settingsPanel.classList.toggle('show-settings');
+        // Check if the settings panel is now visible
+        if (settingsPanel.classList.contains('show-settings')) {
+            // If visible, remove the 'hidden' class to display the panel
+            settingsPanel.classList.remove('hidden');
         } else {
-            settingsPanel.style.display = 'none';
+            // If hidden, wait for the transition to end, then hide the panel
+            settingsPanel.addEventListener('transitionend', function () {
+                settingsPanel.classList.add('hidden');
+            }, { once: true });
         }
     });
-
-    // hide the settings panel if user clicks outside of it
-    // document.addEventListener('click', function(event) {
-    //     if (!settingsPanel.contains(event.target) && event.target !== toggleSettingsButton) {
-    //         settingsPanel.style.display = 'none';
-    //     }
-    // });
 });
