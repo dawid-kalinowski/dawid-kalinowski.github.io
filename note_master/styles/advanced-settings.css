@@ -50,7 +50,6 @@
 
 .note-buttons {
   display: flex;
-  flex-wrap: wrap;
 }
 
 .note-buttons button {
@@ -59,6 +58,6 @@
 }
 
 .space {
-  width: 50px;
+  margin-left: 30px;
 }
 

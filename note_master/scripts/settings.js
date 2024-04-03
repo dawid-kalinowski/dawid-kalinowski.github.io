@@ -67,3 +67,14 @@ function selectAllNotes() {
 function unselectAllNotes() {
     selectNotes(() => false);
 }
+
+function toggleButtons() {
+    const applyAdvancedCheckbox = document.getElementById('applyAdvanced');
+    const settingsContainer = document.querySelector('.settings');
+    const buttons = settingsContainer.querySelectorAll('.menu, .display-notes, .custom-checkbox input, .note-button, #octaveInput');
+    buttons.forEach(button => {
+        if (button.id !== 'toggleAdvancedSettings' && button.id !== 'noInterval') {
+            button.disabled = applyAdvancedCheckbox.checked;
+        }
+    });
+}

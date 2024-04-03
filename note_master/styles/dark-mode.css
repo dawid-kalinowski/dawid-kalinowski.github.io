@@ -17,7 +17,12 @@ body.dark-mode{
 }
 
 #mode-icon {
+    
     font-size: 5vh;
     color: #121212;
     transition: color 0.3s ease;
+}
+
+.dark-mode .modal-content {
+    background-color: #121212;
 }

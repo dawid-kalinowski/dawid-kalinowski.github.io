@@ -96,9 +96,11 @@ body {
     }
 
 }
+
 #noteForm {
     font-size: 20px;
 }
+
 #intervalInput {
     font-size: 15px;
     height: 25px;
@@ -140,9 +142,11 @@ body {
     font-size: 50px;
     grid-column: span 2;
 }
+
 .note-button {
     font-size: 15px;
 }
+
 .settings .menu,
 .display-notes {
     display: flex;
@@ -200,4 +204,22 @@ input[disabled] {
 
 label.custom-checkbox {
     font-size: 14px;
+}
+
+button.menu:disabled,
+button.display-notes:disabled,
+input.custom-checkbox:disabled,
+.note-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: grey;
+    color: white;
+
+}
+
+button.menu:disabled:hover,
+button.display-notes:disabled:hover,
+input.custom-checkbox:disabled:hover,
+.note-button:disabled:hover {
+    background-color: rgb(83, 83, 83);
 }
