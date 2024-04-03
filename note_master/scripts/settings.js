@@ -1,4 +1,5 @@
-let submitButton = document.querySelector('.display-notes');
+let submitButton = document.getElementById('start-button');
+
 let withOctave = false;
 document.addEventListener('DOMContentLoaded', function () {
     submitButton.disabled = false; // enable the submit button by default
