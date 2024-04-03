@@ -35,9 +35,15 @@ function validateInterval(interval) {
 // generate a random note within the selected checkboxes
 function generateRandomNote() {
     const selectedNotes = Array.from(document.querySelectorAll('input[name="note"]:checked'), checkbox => checkbox.value);
+    const currentOctaveChosen = document.querySelector('#octaveInput').value;
     const randomIndex = Math.floor(Math.random() * selectedNotes.length);
-    return selectedNotes[randomIndex];
+    if (document.getElementById('octaveInput').disabled === true) {
+        return selectedNotes[randomIndex];
+    } else {
+        return selectedNotes[randomIndex] + currentOctaveChosen;
+    }
 }
+
 
 
 // fill the next notes array with 3 random notes
@@ -77,6 +83,7 @@ function updateNotesDisplay() {
     revertColorOfCurrentNote();
     nextNotes.push(generateRandomNote()); // add random note as last index of next notes
     setNextNotesNav(nextNotes.join(" ")); // update next notes nav
+    console.log(nextNotes);
 }
 
 // handle adding note to previous notes array

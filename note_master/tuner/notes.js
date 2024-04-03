@@ -83,7 +83,7 @@ Notes.prototype.update = function (note) { // get currently played note and octa
     const currentlyPlayingNote = this.$notesMap[note.value].dataset.name;
     const currentlyPlayingOctave = this.$notesMap[note.value].dataset.octave;
 
-    console.log(currentlyPlayingNote + currentlyPlayingOctave);
+    console.log("obecnie grany dzwiek: " + currentlyPlayingNote + currentlyPlayingOctave);
 
     // and emit an event
     const event = new CustomEvent('noteChanged', {
