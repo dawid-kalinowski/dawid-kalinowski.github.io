@@ -1,6 +1,9 @@
 let submitButton = document.getElementById('start-button');
-
+const toggleFretboardButton = document.getElementById('toggleFretboardButton');
+const fretboardContainer = document.getElementById('fretboardContainer');
 let withOctave = false;
+
+
 document.addEventListener('DOMContentLoaded', function () {
     submitButton.disabled = false; // enable the submit button by default
 });
@@ -73,8 +76,17 @@ function toggleButtons() {
     const settingsContainer = document.querySelector('.settings');
     const buttons = settingsContainer.querySelectorAll('.menu, .display-notes, .custom-checkbox input, .note-button, #octaveInput');
     buttons.forEach(button => {
-        if (button.id !== 'toggleAdvancedSettings' && button.id !== 'noInterval') {
+        if (button.id !== 'toggleAdvancedSettings' && button.id !== 'noInterval' && button.id !== 'toggleFretboardButton') {
             button.disabled = applyAdvancedCheckbox.checked;
         }
     });
 }
+
+
+toggleFretboardButton.addEventListener('click', function () {
+    if (fretboardContainer.style.display === 'none') {
+        fretboardContainer.style.display = 'block';
+    } else {
+        fretboardContainer.style.display = 'none';
+    }
+});

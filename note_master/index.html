@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="styles/checkbox.css" />
   <link rel="stylesheet" href="styles/advanced-settings.css" />
   <link href="styles/mobile-style.css" rel="stylesheet">
+  <link href="styles/fretboard.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link
     href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
@@ -92,16 +93,20 @@
       <input type="checkbox" id="noInterval"> Zmień dźwięk po zagraniu dobrze
       <span class="checkmark"></span>
     </label>
-
+    <button class="display-notes" id="toggleFretboardButton">Włącz gryf gitary</button>
   </div>
 
 
-  <div></div>
-  <div></div>
   <div class="start-stop">
     <button id="start-button" class="display-notes" onclick="startProgram()">Start</button>
     <button class="display-notes" onclick="stopDisplayingNotes()">Stop</button>
     <button class="display-notes" id="toggleSettings">Ustawienia</button>
+  </div>
+
+
+
+  <div class="fretboard" id="fretboardContainer" style="display: none;">
+    <img src="img/fretboard.png" alt="fretboard">
   </div>
 
 
@@ -114,6 +119,34 @@
         <button onclick="advancedSelectWholeNotes()">Zaznacz tylko całe</button>
         <button onclick="advancedSelectSharpNotes()">Zaznacz tylko krzyżyki</button>
         <button onclick="advancedUnselectAllNotes()">Wyczyść</button>
+      </div>
+      <div class="instrument-buttons">
+        <button id="guitarButton">Gitara</button>
+        <div id="guitarOptions" style="display: none; max-height: 200px; overflow-y: auto;">
+          <ul>
+            <li><button id="guitar24FretsButton">Gitara 24 progi</button></li>
+            <li><button id="guitar22FretsButton">Gitara 22 progi</button></li>
+            <li><button id="guitar21FretsButton">Gitara 21 progów</button></li>
+            <li><button id="guitar7StringsButton">Gitara 7 strunowa</button></li>
+            <li><button id="guitar8StringsButton">Gitara 8 strunowa</button></li>
+            <li><button id="guitarEStringButton">Struna niska E</button></li>
+            <li><button id="guitarEString2OctavesButton">Struna niska E - 2 oktawy</button></li>
+            <li><button id="guitarDropDStringButton">Struna niska - drop D</button></li>
+            <li><button id="guitarDropDString2OctavesButton">Struna niska - drop D - 2 oktawy</button></li>
+            <li><button id="guitarAStringButton">Struna A</button></li>
+            <li><button id="guitarAString2OctavesButton">Struna A - 2 oktawy</button></li>
+            <li><button id="guitarDStringButton">Struna D</button></li>
+            <li><button id="guitarDString2OctavesButton">Struna D - 2 oktawy</button></li>
+            <li><button id="guitarGStringButton">Struna G</button></li>
+            <li><button id="guitarGString2OctavesButton">Struna G - 2 oktawy</button></li>
+            <li><button id="guitarBStringButton">Struna B</button></li>
+            <li><button id="guitarBString2OctavesButton">Struna B - 2 oktawy</button></li>
+            <li><button id="guitarHighEStringButton">Struna wysoka E</button></li>
+            <li><button id="guitarHighEString2OctavesButton">Struna wysoka E - 2 oktawy</button></li>
+          </ul>
+        </div>
+
+        <!--instrument buttons are generated  -->
       </div>
       <div id="noteButtonsContainer">
         <!-- all buttons are initially generated here -->
@@ -134,6 +167,7 @@
   <script src="scripts/playing-notes.js"></script>
   <script src="scripts/toggle-settings.js"></script>
   <script src="scripts/advanced-settings.js"></script>
+  <script src="scripts/select-instruments.js"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
   <script src="https://cdn.jsdelivr.net/npm/aubiojs@0.1.1/build/aubio.min.js"></script>

@@ -164,7 +164,6 @@ body {
 }
 
 .start-stop {
-    grid-column: span 2;
     /* margin-top: 30vh; */
     display: flex;
     flex-direction: column;
