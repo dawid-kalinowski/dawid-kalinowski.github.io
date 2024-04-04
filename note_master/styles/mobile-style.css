@@ -39,7 +39,7 @@
 
     .settings {
         right: -100vw;
-        margin-top: 430px;
+        margin-top: 480px;
         position: absolute;
         width: 100vw;
         overflow-x: hidden;
@@ -87,6 +87,7 @@
 
     
 .start-stop>button {
+    z-index: 2;
     font-size: 3vh;
 }
 }

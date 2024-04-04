@@ -65,6 +65,7 @@ body {
 
 
 .settings {
+    z-index: 1;
     position: fixed;
     text-align: center;
     right: -20vw;

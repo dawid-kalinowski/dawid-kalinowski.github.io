@@ -105,9 +105,65 @@
 
 
 
-  <div class="fretboard" id="fretboardContainer" style="display: none;">
+  <div class="fretboard" id="fretboardContainer">
     <img src="img/fretboard.png" alt="fretboard">
+    <img class="notes-image" src="img/6th-string-wholes.png" alt="6th-string-wholes" id="6th-string-wholes">
+    <img class="notes-image" src="img/6th-string-sharps.png" alt="6th-string-sharps" id="6th-string-sharps">
+    <img class="notes-image" src="img/5th-string-wholes.png" alt="5th-string-wholes" id="5th-string-wholes">
+    <img class="notes-image" src="img/5th-string-sharps.png" alt="5th-string-sharps" id="5th-string-sharps">
+    <img class="notes-image" src="img/4th-string-wholes.png" alt="4th-string-wholes" id="4th-string-wholes">
+    <img class="notes-image" src="img/4th-string-sharps.png" alt="4th-string-sharps" id="4th-string-sharps">
+    <img class="notes-image" src="img/3rd-string-wholes.png" alt="3rd-string-wholes" id="3rd-string-wholes">
+    <img class="notes-image" src="img/3rd-string-sharps.png" alt="3rd-string-sharps" id="3rd-string-sharps">
+    <img class="notes-image" src="img/2nd-string-wholes.png" alt="2nd-string-wholes" id="2nd-string-wholes">
+    <img class="notes-image" src="img/2nd-string-sharps.png" alt="2nd-string-sharps" id="2nd-string-sharps">
+    <img class="notes-image" src="img/1st-string-wholes.png" alt="1st-string-wholes" id="1st-string-wholes">
+    <img class="notes-image" src="img/1st-string-sharps.png" alt="1st-string-sharps" id="1st-string-sharps">
+    <nav class="option7t">
+      <input type="checkbox" id="toggleWholeCheckbox" onchange="toggleAndCheck(this)" checked>
+      <label for="toggleWholeCheckbox"></label>
+
+      <input type="checkbox" id="toggleSharpCheckbox" onchange="toggleAndCheck2(this)" checked>
+      <label for="toggleSharpCheckbox"></label>
+    </nav>
+    <nav class="option6t">
+      <input type="checkbox" id="stringHighECheckboxToggle" checked>
+      <label for="stringHighECheckboxToggle"></label>
+      <input type="checkbox" id="stringHighECheckboxToggle2" checked>
+      <label for="stringHighECheckboxToggle2"></label>
+    </nav>
+    <nav class="option5t">
+      <input type="checkbox" id="stringBCheckboxToggle" checked>
+      <label for="stringBCheckboxToggle"></label>
+      <input type="checkbox" id="stringBCheckboxToggle2" checked>
+      <label for="stringBCheckboxToggle2"></label>
+    </nav>
+    <nav class="option4t">
+      <input type="checkbox" id="stringGCheckboxToggle" checked>
+      <label for="stringGCheckboxToggle"></label>
+      <input type="checkbox" id="stringGCheckboxToggle2" checked>
+      <label for="stringGCheckboxToggle2"></label>
+    </nav>
+    <nav class="option3t">
+      <input type="checkbox" id="stringDCheckboxToggle" checked>
+      <label for="stringDCheckboxToggle"></label>
+      <input type="checkbox" id="stringDCheckboxToggle2" checked>
+      <label for="stringDCheckboxToggle2"></label>
+    </nav>
+    <nav class="option2t">
+      <input type="checkbox" id="stringACheckboxToggle" checked>
+      <label for="stringACheckboxToggle"></label>
+      <input type="checkbox" id="stringACheckboxToggle2" checked>
+      <label for="stringACheckboxToggle2"></label>
+    </nav>
+    <nav class="option1t">
+      <input type="checkbox" id="stringECheckboxToggle" checked>
+      <label for="stringECheckboxToggle"></label>
+      <input type="checkbox" id="stringECheckboxToggle2" checked>
+      <label for="stringECheckboxToggle2"></label>
+    </nav>
   </div>
+
 
 
   <div id="advancedSettingsWindow" class="modal">
@@ -168,6 +224,7 @@
   <script src="scripts/toggle-settings.js"></script>
   <script src="scripts/advanced-settings.js"></script>
   <script src="scripts/select-instruments.js"></script>
+  <script src="scripts/fretboard.js"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
   <script src="https://cdn.jsdelivr.net/npm/aubiojs@0.1.1/build/aubio.min.js"></script>
