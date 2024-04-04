@@ -125,6 +125,13 @@ body {
     grid-template-columns: repeat(5, 1fr);
 }
 
+.info {
+    position: absolute;
+    grid-column: span 0;
+    top: 0px;
+    font-size: 3vh;
+}
+
 .current-note {
     color: rgb(255, 86, 255);
     font-size: 150px;
