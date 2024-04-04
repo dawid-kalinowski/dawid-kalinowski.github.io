@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="styles/advanced-settings.css" />
   <link href="styles/mobile-style.css" rel="stylesheet">
   <link href="styles/fretboard.css" rel="stylesheet">
+  <link href="styles/piano.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link
     href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
@@ -94,7 +95,8 @@
       <input type="checkbox" id="noInterval"> Zmień dźwięk po zagraniu dobrze
       <span class="checkmark"></span>
     </label>
-    <button class="display-notes" id="toggleFretboardButton">Włącz gryf gitary</button>
+    <button class="display-instrument" id="toggleFretboardButton">Włącz gryf gitary</button>
+    <button class="display-instrument" id="togglePianoButton">Włącz klawisze na keyboardzie</button>
   </div>
 
 
@@ -163,6 +165,11 @@
       <input type="checkbox" id="stringECheckboxToggle2" checked>
       <label for="stringECheckboxToggle2"></label>
     </nav>
+    <div class="cheatsheet">Spis dźwięków na gryfie</div>
+  </div>
+
+  <div class="piano" id="piano-container" style="display: none;">
+    <img src="img/piano.png" alt="fretboard">
   </div>
 
 
@@ -226,6 +233,7 @@
   <script src="scripts/advanced-settings.js"></script>
   <script src="scripts/select-instruments.js"></script>
   <script src="scripts/fretboard.js"></script>
+  <script src="scripts/piano.js"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
   <script src="https://cdn.jsdelivr.net/npm/aubiojs@0.1.1/build/aubio.min.js"></script>

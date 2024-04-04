@@ -24,7 +24,8 @@ body {
     border: solid 1px rgb(119, 119, 119);
 } */
 
-.display-notes {
+.display-notes,
+.display-instrument {
     /* margin-left: 500px; */
     height: 30px;
     width: 70px;
@@ -156,7 +157,8 @@ body {
 }
 
 .settings .menu,
-.display-notes {
+.display-notes,
+.display-instrument {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -188,7 +190,8 @@ body {
 
 
 .menu:hover,
-.display-notes:hover {
+.display-notes:hover,
+.display-instrument:hover {
     background-color: #0056b3;
 }
 

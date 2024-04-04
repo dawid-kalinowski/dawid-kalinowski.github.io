@@ -1,3 +1,21 @@
+const toggleFretboardButton = document.getElementById('toggleFretboardButton');
+const fretboardContainer = document.getElementById('fretboardContainer');
+
+
+
+
+toggleFretboardButton.addEventListener('click', function () {
+    if (fretboardContainer.style.display === 'none') {
+        pianoContainer.style.display = 'none'
+        fretboardContainer.style.display = 'block';
+    } else {
+        fretboardContainer.style.display = 'none';
+    }
+});
+
+
+
+
 // create an event listener and displays or hides specific notes for each string
 function handleCheckboxChange(checkboxId, imageId) {
     const checkbox = document.getElementById(checkboxId);
