@@ -428,3 +428,76 @@ function selectViolinNotes() {
         }
     });
 }
+
+
+
+let allTrebleClefNotesButton = document.createElement("button");
+allTrebleClefNotesButton.textContent = "Klucz wiolinowy";
+allTrebleClefNotesButton.onclick = function () {
+    selectAllTrebleCleffNotes();
+};
+document.querySelector(".instrument-buttons").appendChild(allTrebleClefNotesButton);
+
+function selectAllTrebleCleffNotes() {
+    advancedSelectedNotes = [];
+    let notes = ['C4', 'C♯4', 'D4', 'D♯4', 'E4', 'F4',
+        'F♯4', 'G4', 'G♯4', 'A4', 'A♯4', 'B4', 'C5', 'C♯5', 'D5', 'D♯5', 'E5', 'F5', 'F♯5', 'G5',
+        'G♯5', 'A5', 'A♯5', 'B5', 'C6'];
+    let noteButtons = document.querySelectorAll("#noteButtonsContainer .advanced-note-button");
+    noteButtons.forEach(button => {
+        if (notes.includes(button.textContent)) {
+            button.classList.add("selected");
+            advancedSelectedNotes.push(button.value);
+        } else {
+            button.classList.remove("selected");
+        }
+    });
+}
+
+let allBassClefNotesButton = document.createElement("button");
+allBassClefNotesButton.textContent = "Klucz basowy";
+allBassClefNotesButton.onclick = function () {
+    selectAllBassCleffNotes();
+};
+document.querySelector(".instrument-buttons").appendChild(allBassClefNotesButton);
+
+function selectAllBassCleffNotes() {
+    advancedSelectedNotes = [];
+    let notes = ['C2', 'C♯2', 'D2', 'D♯2',
+        'E2', 'F2', 'F♯2', 'G2', 'G♯2', 'A2', 'A♯2', 'B2', 'C3', 'C♯3', 'D3', 'D♯3', 'E3', 'F3',
+        'F♯3', 'G3', 'G♯3', 'A3', 'A♯3', 'B3'];
+    let noteButtons = document.querySelectorAll("#noteButtonsContainer .advanced-note-button");
+    noteButtons.forEach(button => {
+        if (notes.includes(button.textContent)) {
+            button.classList.add("selected");
+            advancedSelectedNotes.push(button.value);
+        } else {
+            button.classList.remove("selected");
+        }
+    });
+}
+
+let allStaffNotesButton = document.createElement("button");
+allStaffNotesButton.textContent = "Wiolinowy i basowy";
+allStaffNotesButton.onclick = function () {
+    selectAllStaffNotes();
+};
+document.querySelector(".instrument-buttons").appendChild(allStaffNotesButton);
+
+function selectAllStaffNotes() {
+    advancedSelectedNotes = [];
+    let staffNotes = ['C2', 'C♯2', 'D2', 'D♯2',
+        'E2', 'F2', 'F♯2', 'G2', 'G♯2', 'A2', 'A♯2', 'B2', 'C3', 'C♯3', 'D3', 'D♯3', 'E3', 'F3',
+        'F♯3', 'G3', 'G♯3', 'A3', 'A♯3', 'B3', 'C4', 'C♯4', 'D4', 'D♯4', 'E4', 'F4',
+        'F♯4', 'G4', 'G♯4', 'A4', 'A♯4', 'B4', 'C5', 'C♯5', 'D5', 'D♯5', 'E5', 'F5', 'F♯5', 'G5',
+        'G♯5', 'A5', 'A♯5', 'B5', 'C6'];
+    let noteButtons = document.querySelectorAll("#noteButtonsContainer .advanced-note-button");
+    noteButtons.forEach(button => {
+        if (staffNotes.includes(button.textContent)) {
+            button.classList.add("selected");
+            advancedSelectedNotes.push(button.value);
+        } else {
+            button.classList.remove("selected");
+        }
+    });
+}

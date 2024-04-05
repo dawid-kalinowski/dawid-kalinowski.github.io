@@ -14,6 +14,7 @@
   <link href="styles/mobile-style.css" rel="stylesheet">
   <link href="styles/fretboard.css" rel="stylesheet">
   <link href="styles/piano.css" rel="stylesheet">
+  <link href="styles/bass.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link
     href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
@@ -97,6 +98,15 @@
     </label>
     <button class="display-instrument" id="toggleFretboardButton">Włącz gryf gitary</button>
     <button class="display-instrument" id="togglePianoButton">Włącz klawisze na keyboardzie</button>
+    <button class="display-instrument" id="toggleBassButton">Włącz gryf gitary basowej</button>
+    <nav>
+      <label class="note-type" for="letters">
+        <input type="checkbox" id="letters" checked> Litery
+      </label>
+      <label class="note-type" for="notes">
+        <input type="checkbox" id="notes"> Nuty
+      </label>
+    </nav>
   </div>
 
 
@@ -169,7 +179,11 @@
   </div>
 
   <div class="piano" id="piano-container" style="display: none;">
-    <img src="img/piano.png" alt="fretboard">
+    <img src="img/piano.png" alt="piano">
+  </div>
+
+  <div class="bass" id="bass-container" style="display: none;">
+    <img src="img/bass.png" alt="bass">
   </div>
 
 
@@ -234,6 +248,7 @@
   <script src="scripts/select-instruments.js"></script>
   <script src="scripts/fretboard.js"></script>
   <script src="scripts/piano.js"></script>
+  <script src="scripts/bass.js"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
   <script src="https://cdn.jsdelivr.net/npm/aubiojs@0.1.1/build/aubio.min.js"></script>

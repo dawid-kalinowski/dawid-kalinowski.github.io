@@ -1,4 +1,6 @@
 let submitButton = document.getElementById('start-button');
+const lettersCheckbox = document.getElementById("letters");
+const notesCheckbox = document.getElementById("notes");
 
 let withOctave = false;
 
@@ -80,3 +82,19 @@ function toggleButtons() {
         }
     });
 }
+
+lettersCheckbox.addEventListener("change", function () {
+    if (this.checked) {
+        notesCheckbox.checked = false;
+    } else {
+        notesCheckbox.checked = true;
+    }
+});
+
+notesCheckbox.addEventListener("change", function () {
+    if (this.checked) {
+        lettersCheckbox.checked = false; 
+    } else {
+        lettersCheckbox.checked = true;
+    }
+});

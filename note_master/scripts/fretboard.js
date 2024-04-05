@@ -7,6 +7,7 @@ const fretboardContainer = document.getElementById('fretboardContainer');
 toggleFretboardButton.addEventListener('click', function () {
     if (fretboardContainer.style.display === 'none') {
         pianoContainer.style.display = 'none'
+        bassContainer.style.display = 'none';
         fretboardContainer.style.display = 'block';
     } else {
         fretboardContainer.style.display = 'none';
@@ -20,12 +21,8 @@ toggleFretboardButton.addEventListener('click', function () {
 function handleCheckboxChange(checkboxId, imageId) {
     const checkbox = document.getElementById(checkboxId);
     const stringImage = document.getElementById(imageId);
-    console.log("Checkbox:", checkbox);
-    console.log("Image:", stringImage);
     checkbox.addEventListener('change', function () {
-        console.log("Checkbox state changed:", checkbox.checked);
         stringImage.style.display = checkbox.checked ? "inline" : "none";
-        console.log("Image display:", stringImage.style.display);
     });
 }
 

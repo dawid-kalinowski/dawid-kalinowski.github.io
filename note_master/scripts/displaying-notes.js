@@ -4,6 +4,7 @@ let displayNotesInterval;
 let withoutInterval = false;
 let withInterval = false;
 let selectedNotes;
+var currentNoteToCompare;
 const CURRENT_NOTE_CLASS = 'current-note';
 const NEXT_NOTES_CLASS = 'next-notes';
 const PREVIOUS_NOTES_CLASS = 'previous-notes';
@@ -63,7 +64,7 @@ function initializeNextNotesArray() {
 
 function startDisplaying() {
     stopDisplayingNotes(); // if any notes are being displayed, stop it
-    setCurrentNoteNav("");
+    emptyCurrentNoteNav();
     setPreviousNotesNav("");
     initializeNextNotesArray(); // generate initial set of notes
 }
@@ -84,10 +85,18 @@ function startDisplayingNotes(interval) {
 
 // helper function to display next note, and move every note 1 place left
 function updateNotesDisplay() {
+
+    const lettersCheckbox = document.getElementById("letters");
+
+
     const nextNotes = getNextNotes();
     const currentNote = getCurrentNote();
     if (currentNote) { addNoteToPreviousNotes(currentNote) } // add current note to previous notes array if it exists
-    setCurrentNoteNav(nextNotes.shift()); // remove the first note from the next notes array and display it as the current note
+    if (lettersCheckbox.checked) {
+        setCurrentNoteNav(nextNotes.shift()); // remove the first note from the next notes array and display it as the current note
+    } else {
+        setCurrentImgNoteNav(nextNotes.shift());
+    }
     revertColorOfCurrentNote();
     nextNotes.push(generateRandomNote()); // add random note as last index of next notes
     setNextNotesNav(nextNotes.join(" ")); // update next notes nav
@@ -125,13 +134,61 @@ function getPreviousNotes() {
 
 
 function setCurrentNoteNav(note) {
+    currentNoteToCompare = note;
     const currentNoteNav = document.querySelector(`.${CURRENT_NOTE_CLASS}`);
     const noteHtml = note.replace('♯', '<span class="sharp-symbol">♯</span>');
     currentNoteNav.innerHTML = `<nav>${noteHtml}</nav>`;
 }
 
+
+function setCurrentImgNoteNav(note) {
+    const currentNoteNav = document.querySelector(`.${CURRENT_NOTE_CLASS}`);
+    currentNoteToCompare = note;
+    let noteHtml = note.replace('♯', '');
+    let imgSrc = `img/${noteHtml}note.png`;
+    if (noteHtml.length === 1) {
+        imgSrc = `img/${noteHtml}4note.png`;
+    }
+
+
+    // Create a new Image element
+    const img = new Image();
+
+    // Set up event handlers for loading and error
+    img.onload = function () {
+        // If the image loads successfully, set its source as the innerHTML
+        currentNoteNav.innerHTML = `<nav><img src="${imgSrc}"></img></nav>`;
+    };
+
+    img.onerror = function () {
+        // If the image fails to load, replace it with the note HTML
+        noteHtml = note.replace('♯', '<span class="sharp-symbol">♯</span>');
+        currentNoteNav.innerHTML = `<nav>${noteHtml}</nav>`;
+    };
+
+    // Set the src attribute to trigger the loading process
+    img.src = imgSrc;
+}
+
+
+function emptyCurrentNoteNav() {
+    const currentNoteNav = document.querySelector(`.${CURRENT_NOTE_CLASS}`);
+    if (lettersCheckbox.checked) {
+        setCurrentNoteNav("");
+    } else {
+        currentNoteNav.innerHTML = `<nav><img src="img/empty-staff.png"></img></nav>`;
+    }
+}
+
+
+
 function setNextNotesNav(string) {
     const nextNotesNav = document.querySelector(`.${NEXT_NOTES_CLASS}`);
+    if (notesCheckbox.checked) {
+        nextNotesNav.style.display = 'none';
+    } else {
+        nextNotesNav.style.display = 'block';
+    }
     const noteHtml = string.replaceAll('♯', '<span class="sharp-symbol">♯</span>');
     nextNotesNav.innerHTML = `<nav>${noteHtml}</nav>`;
 }
@@ -145,4 +202,5 @@ function setPreviousNotesNav(string) {
 function revertColorOfCurrentNote() {
     const currentNoteNav = document.querySelector(`.${CURRENT_NOTE_CLASS}`);
     currentNoteNav.style.color = '';
+    currentNoteNav.style.backgroundColor = '';
 }

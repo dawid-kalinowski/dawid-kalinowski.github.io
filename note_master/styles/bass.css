@@ -1,0 +1,11 @@
+.bass {
+    /* width: 20px; */
+    /* display: none; */
+    position: relative;
+}
+
+.bass img {
+    position: absolute;
+    /* top: 0; */
+    /* left: 40px; */
+}
