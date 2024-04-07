@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>NaN++</title>
   <link rel="icon" href="icon.png" type="image/png">
+  <title>Trener nut</title>
   <link rel="stylesheet" href="tuner/style.css" />
   <link rel="stylesheet" href="styles/style.css" />
   <link rel="stylesheet" href="styles/dark-mode.css" />
@@ -184,6 +185,46 @@
 
   <div class="bass" id="bass-container" style="display: none;">
     <img src="img/bass.png" alt="bass">
+    <img class="notes-image" src="img/4th-bass-wholes.png" alt="4th-bass-wholes" id="4th-bass-wholes">
+    <img class="notes-image" src="img/4th-bass-sharps.png" alt="4th-bass-sharps" id="4th-bass-sharps">
+    <img class="notes-image" src="img/3rd-bass-wholes.png" alt="3rd-bass-wholes" id="3rd-bass-wholes">
+    <img class="notes-image" src="img/3rd-bass-sharps.png" alt="3rd-bass-sharps" id="3rd-bass-sharps">
+    <img class="notes-image" src="img/2nd-bass-wholes.png" alt="2nd-bass-wholes" id="2nd-bass-wholes">
+    <img class="notes-image" src="img/2nd-bass-sharps.png" alt="2nd-bass-sharps" id="2nd-bass-sharps">
+    <img class="notes-image" src="img/1st-bass-wholes.png" alt="1st-bass-wholes" id="1st-bass-wholes">
+    <img class="notes-image" src="img/1st-bass-sharps.png" alt="1st-bass-sharps" id="1st-bass-sharps">
+    <nav class="option7b">
+      <input type="checkbox" id="toggleWholeBassCheckbox" onchange="toggleAndCheckBass(this)" checked>
+      <label for="toggleWholeBassCheckbox"></label>
+
+      <input type="checkbox" id="toggleSharpBassCheckbox" onchange="toggleAndCheckBass2(this)" checked>
+      <label for="toggleSharpBassCheckbox"></label>
+    </nav>
+    <nav class="option4b">
+      <input type="checkbox" id="GBassCheckboxToggle" checked>
+      <label for="GBassCheckboxToggle"></label>
+      <input type="checkbox" id="GBassCheckboxToggle2" checked>
+      <label for="GBassCheckboxToggle2"></label>
+    </nav>
+    <nav class="option3b">
+      <input type="checkbox" id="DBassCheckboxToggle" checked>
+      <label for="DBassCheckboxToggle"></label>
+      <input type="checkbox" id="DBassCheckboxToggle2" checked>
+      <label for="DBassCheckboxToggle2"></label>
+    </nav>
+    <nav class="option2b">
+      <input type="checkbox" id="ABassCheckboxToggle" checked>
+      <label for="ABassCheckboxToggle"></label>
+      <input type="checkbox" id="ABassCheckboxToggle2" checked>
+      <label for="ABassCheckboxToggle2"></label>
+    </nav>
+    <nav class="option1b">
+      <input type="checkbox" id="EBassCheckboxToggle" checked>
+      <label for="EBassCheckboxToggle"></label>
+      <input type="checkbox" id="EBassCheckboxToggle2" checked>
+      <label for="EBassCheckboxToggle2"></label>
+    </nav>
+    <div class="cheatsheet">Spis dźwięków na gryfie</div>
   </div>
 
 

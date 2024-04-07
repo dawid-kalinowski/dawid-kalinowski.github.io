@@ -144,10 +144,14 @@ function setCurrentNoteNav(note) {
 function setCurrentImgNoteNav(note) {
     const currentNoteNav = document.querySelector(`.${CURRENT_NOTE_CLASS}`);
     currentNoteToCompare = note;
-    let noteHtml = note.replace('♯', '');
-    let imgSrc = `img/${noteHtml}note.png`;
-    if (noteHtml.length === 1) {
+    let noteHtml = note.replace('♯', 'sharp');
+    let imgSrc;
+    if (/\d/.test(noteHtml)) {
+        imgSrc = `img/${noteHtml}note.png`;
+        console.log(imgSrc);
+    } else {
         imgSrc = `img/${noteHtml}4note.png`;
+        console.log(imgSrc);
     }
 
 
