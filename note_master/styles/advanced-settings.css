@@ -12,7 +12,7 @@
 }
 
 .modal-content {
-  background-color: #fefefe;
+  background-color: rgba(254, 254, 254, 0.8);
   margin: 10% auto;
   padding: 20px;
   border: 1px solid #888;
@@ -38,6 +38,11 @@
   color: #fff;
 }
 
+#noteButtonsContainer button.selected:disabled {
+  background-color: #ccc;
+  color: #999;
+}
+
 
 .octave-container {
   margin-bottom: 20px;
@@ -61,3 +66,12 @@
   margin-left: 30px;
 }
 
+.simple-vs-advanced {
+  display: flex;
+  justify-content: space-between;
+}
+
+.left-section,
+.right-section {
+  flex-grow: 1;
+}
