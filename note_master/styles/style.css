@@ -59,10 +59,23 @@ body {
     background-color: #555;
 }
 
-.sharp-symbol {
-    vertical-align: top;
+
+.current-note nav .sharp-symbol {
+    position: absolute;
+    top: 0;
+    right: -10px;
     font-size: 70%;
 }
+
+.current-note nav .octave-symbol {
+    position: absolute;
+    bottom: 0;
+    right: -30px;
+    font-size: 60%;
+}
+
+
+
 
 
 .settings {
@@ -137,6 +150,7 @@ body {
     color: rgb(255, 86, 255);
     font-size: 150px;
     text-align: center;
+    position: relative;
 }
 
 
@@ -147,6 +161,7 @@ body {
 }
 
 .next-notes {
+    margin-left: 30px;
     text-align: left;
     font-size: 50px;
     grid-column: span 2;

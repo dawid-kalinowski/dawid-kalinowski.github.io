@@ -136,9 +136,14 @@ function getPreviousNotes() {
 function setCurrentNoteNav(note) {
     currentNoteToCompare = note;
     const currentNoteNav = document.querySelector(`.${CURRENT_NOTE_CLASS}`);
+
     const noteHtml = note.replace('♯', '<span class="sharp-symbol">♯</span>');
-    currentNoteNav.innerHTML = `<nav>${noteHtml}</nav>`;
+
+    const noteWithOctaveSymbols = noteHtml.replace(/\d/g, '<span class="octave-symbol">$&</span>');
+
+    currentNoteNav.innerHTML = `<nav>${noteWithOctaveSymbols}</nav>`;
 }
+
 
 
 function setCurrentImgNoteNav(note) {
@@ -199,7 +204,8 @@ function setNextNotesNav(string) {
 
 function setPreviousNotesNav(string) {
     const previousNotesNav = document.querySelector(`.${PREVIOUS_NOTES_CLASS}`);
-    const noteHtml = string.replaceAll('♯', '<span class="sharp-symbol">♯</span>');
+    const noteWithoutSpaces = string.split(' ').join('');
+    const noteHtml = noteWithoutSpaces.replaceAll('♯', '<span class="sharp-symbol">♯</span>');
     previousNotesNav.innerHTML = `<nav>${noteHtml}</nav>`;
 }
 
