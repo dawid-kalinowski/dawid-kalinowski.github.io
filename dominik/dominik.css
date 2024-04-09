@@ -20,12 +20,23 @@ h1 {
     text-shadow: 0 0 10px #90EE90;
 }
 
+
+.github-link {
+    font-family: 'Courier New', Courier, monospace;
+    color: #90EE90;
+    text-decoration: none;
+}
+
+.github-link:hover {
+    text-decoration: underline;
+}
+
 .licznik {
     display: flex;
-    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    font-size: 5vw; /* Adjusts font size relative to the viewport width */
+    font-size: 5vw;
 }
 
 .separator {
