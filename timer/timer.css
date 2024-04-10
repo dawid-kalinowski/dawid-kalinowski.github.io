@@ -19,9 +19,6 @@ footer {
     width: 100%;
 }
 
-/* Your existing CSS */
-
-/* Modal styles */
 .modal {
     display: none;
     position: fixed;
@@ -31,19 +28,20 @@ footer {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .modal-content {
     background-color: #fefefe;
-    margin: 15% auto;
+    margin: 20% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 30%;
+    width: 50%;
+    max-width: 400px;
 }
 
 .close {
-    color: #aaaaaa;
+    color: #aaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
@@ -51,10 +49,43 @@ footer {
 
 .close:hover,
 .close:focus {
-    color: #000;
+    color: black;
     text-decoration: none;
     cursor: pointer;
 }
+
+.input-group {
+    margin-bottom: 10px;
+}
+
+.input-group label {
+    display: inline-block;
+    width: 100px;
+    font-weight: bold;
+}
+
+.input-group input {
+    width: calc(100% - 110px);
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
 
 
 #timer {
@@ -64,4 +95,9 @@ footer {
 #timer:hover {
     color: red;
     cursor: pointer;
+}
+
+button#resetButton.disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
 }

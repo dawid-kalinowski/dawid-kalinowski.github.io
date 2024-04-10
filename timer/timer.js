@@ -59,6 +59,8 @@ function startTimer() {
     }
     timerRunning = true;
     document.getElementById("startStopButton").innerText = "Stop";
+    document.getElementById("resetButton").disabled = true;
+    document.getElementById("resetButton").classList.add("disabled");
     clearInterval(timer);
     timer = setInterval(updateTimer, 10);
 }
@@ -67,7 +69,10 @@ function stopTimer() {
     clearInterval(timer);
     timerRunning = false;
     document.getElementById("startStopButton").innerText = "Start";
+    document.getElementById("resetButton").disabled = false;
+    document.getElementById("resetButton").classList.remove("disabled");
 }
+
 
 
 
@@ -104,8 +109,11 @@ function formatMilliseconds(ms) {
 
 
 function openModal() {
-    document.getElementById("myModal").style.display = "block";
+    if (!timerRunning) {
+        document.getElementById("myModal").style.display = "block";
+    }
 }
+
 
 function closeModal() {
     document.getElementById("myModal").style.display = "none";
@@ -124,6 +132,7 @@ function setTime() {
     hours = initialHours;
     minutes = initialMinutes;
     seconds = initialSeconds;
+    milliseconds = 0;
 
     document.getElementById("timer").innerText = formatTime(hours) + ":" + formatTime(minutes) + ":" + formatTime(seconds) + "." + formatMilliseconds(milliseconds);
     closeModal();
