@@ -86,3 +86,13 @@ h1 {
     box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
     animation: colorChange 8s infinite;
 }
+
+nav {
+    display: inline-block;
+    animation: colorChange 5s infinite; 
+  }
+
+  img {
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+    border: 2px solid rgba(255, 0, 0, 0.8);
+  }
