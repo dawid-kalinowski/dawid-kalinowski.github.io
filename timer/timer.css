@@ -119,8 +119,9 @@ button#resetButton.disabled {
 
 .background-image {
     position: absolute;
-    top: 0px;
-    left: 0px;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
     z-index: -1;
-    opacity: 50%;
-}
+    opacity: 0.5;
