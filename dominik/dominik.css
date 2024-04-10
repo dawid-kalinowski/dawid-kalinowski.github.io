@@ -3,12 +3,12 @@ body {
     padding: 0;
     font-family: 'Courier New', Courier, monospace;
     background-color: #151515;
-    color: #fff; 
+    color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
 }
+
 
 #odliczanie {
     text-align: center;
@@ -43,42 +43,53 @@ h1 {
     margin: 0 15px;
     text-shadow: 0 0 5px #90EE90;
 }
+
 @keyframes colorChange {
     0% {
         box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
         border-color: rgba(255, 0, 0, 0.8);
     }
+
     14% {
         box-shadow: 0 0 20px rgba(255, 165, 0, 0.8);
         border-color: rgba(255, 165, 0, 0.8);
     }
+
     28% {
         box-shadow: 0 0 20px rgba(255, 255, 0, 0.8);
         border-color: rgba(255, 255, 0, 0.8);
     }
+
     42% {
         box-shadow: 0 0 20px rgba(0, 128, 0, 0.8);
         border-color: rgba(0, 128, 0, 0.8);
     }
+
     56% {
         box-shadow: 0 0 20px rgba(0, 0, 255, 0.8);
         border-color: rgba(0, 0, 255, 0.8);
     }
+
     70% {
         box-shadow: 0 0 20px rgba(75, 0, 130, 0.8);
         border-color: rgba(75, 0, 130, 0.8);
     }
+
     84% {
         box-shadow: 0 0 20px rgba(238, 130, 238, 0.8);
         border-color: rgba(238, 130, 238, 0.8);
     }
+
     100% {
         box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
         border-color: rgba(255, 0, 0, 0.8);
     }
 }
 
-#dni, #godziny, #minuty, #sekundy {
+#dni,
+#godziny,
+#minuty,
+#sekundy {
     padding: 15px 20px;
     background-color: #333;
     border: 3px solid rgba(255, 0, 0, 0.8);
@@ -89,10 +100,30 @@ h1 {
 
 nav {
     display: inline-block;
-    animation: colorChange 5s infinite; 
-  }
+    animation: colorChange 5s infinite;
+}
 
-  img {
+img {
+    min-width: 800px;
     box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
     border: 2px solid rgba(255, 0, 0, 0.8);
-  }
+}
+
+.myLink {
+    font-size: 40px;
+    margin-top: 5vh;
+}
+
+
+.background {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+}
+.background img {
+    opacity: 0.5;
+    height: 120vh;
+    width: auto;
+    border: none;
+    box-shadow: none;
+}
