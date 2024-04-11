@@ -4,7 +4,7 @@ let minutes = 10;
 let seconds = 0;
 let milliseconds = 0;
 let timerRunning = false;
-
+let showMilliseconds = true;
 
 let initialHours = 0;
 let initialMinutes = 10;
@@ -15,21 +15,16 @@ window.onload = function () {
     initializeTimerValues();
 }
 
-
-
-
 function setInitialTime() {
     initialHours = Math.max(0, initialHours);
     initialMinutes = Math.max(0, Math.min(initialMinutes, 59));
     initialSeconds = Math.max(0, Math.min(initialSeconds, 59));
-
 }
 
 function initializeTimerValues() {
     hours = initialHours;
     minutes = initialMinutes;
     seconds = initialSeconds;
-
 }
 
 function resetTimer() {
@@ -39,11 +34,9 @@ function resetTimer() {
         minutes = initialMinutes;
         seconds = initialSeconds;
         milliseconds = 0;
-        document.getElementById("timer").innerText = formatTime(hours) + ":" + formatTime(minutes) + ":" + formatTime(seconds) + "." + formatMilliseconds(milliseconds);
+        updateTimerDisplay();
     }
 }
-
-
 
 function toggleTimer() {
     if (timerRunning) {
@@ -73,9 +66,6 @@ function stopTimer() {
     document.getElementById("resetButton").classList.remove("disabled");
 }
 
-
-
-
 function updateTimer() {
     milliseconds -= 10;
     if (milliseconds < 0) {
@@ -93,9 +83,19 @@ function updateTimer() {
     if (hours < 0) {
         resetTimer();
     } else {
-        document.getElementById("timer").innerText = formatTime(hours) + ":" + formatTime(minutes) + ":" + formatTime(seconds) + ":" + formatMilliseconds(milliseconds);
+        updateTimerDisplay();
     }
 }
+
+function updateTimerDisplay() {
+    const timerDisplay = document.getElementById("timer");
+    if (showMilliseconds) {
+        timerDisplay.innerText = (hours > 0 ? formatTime(hours) + ":" : "") + formatTime(minutes) + ":" + formatTime(seconds) + "." + formatMilliseconds(milliseconds);
+    } else {
+        timerDisplay.innerText = (hours > 0 ? formatTime(hours) + ":" : "") + formatTime(minutes) + ":" + formatTime(seconds);
+    }
+}
+
 
 function formatTime(time) {
     return (time < 10 ? "0" + time : time);
@@ -106,19 +106,15 @@ function formatMilliseconds(ms) {
     return msWithLeadingZeros;
 }
 
-
-
 function openModal() {
     if (!timerRunning) {
         document.getElementById("myModal").style.display = "block";
     }
 }
 
-
 function closeModal() {
     document.getElementById("myModal").style.display = "none";
 }
-
 
 function setTime() {
     const newHours = parseInt(document.getElementById("modalHours").value) || 0;
@@ -134,7 +130,11 @@ function setTime() {
     seconds = initialSeconds;
     milliseconds = 0;
 
-    document.getElementById("timer").innerText = formatTime(hours) + ":" + formatTime(minutes) + ":" + formatTime(seconds) + "." + formatMilliseconds(milliseconds);
+    updateTimerDisplay();
     closeModal();
 }
 
+function toggleMillisecondsDisplay() {
+    showMilliseconds = document.getElementById("showMillisecondsCheckbox").checked;
+    updateTimerDisplay();
+}
