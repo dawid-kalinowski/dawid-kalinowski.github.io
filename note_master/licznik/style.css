@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #242424;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#countdown {
+    color: #fff;
+    text-shadow: 0 0 5px rgba(255, 0, 0, 0.5), 0 0 10px rgba(255, 119, 0, 0.5), 0 0 15px rgba(255, 255, 0, 0.5), 0 0 20px rgba(0, 255, 0, 0.5), 0 0 25px rgba(0, 0, 255, 0.5), 0 0 30px rgba(138, 43, 226, 0.5), 0 0 35px rgba(138, 43, 226, 0.5), 0 0 40px rgba(255, 0, 255, 0.5), 0 0 45px rgba(255, 0, 255, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.1);
+    font-size: 48px;
+    text-align: center;
+    animation: glow 1s infinite linear alternate;
+}
+
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 5px rgba(255, 0, 0, 0.5), 0 0 10px rgba(255, 119, 0, 0.5), 0 0 15px rgba(255, 255, 0, 0.5), 0 0 20px rgba(0, 255, 0, 0.5), 0 0 25px rgba(0, 0, 255, 0.5), 0 0 30px rgba(138, 43, 226, 0.5), 0 0 35px rgba(138, 43, 226, 0.5), 0 0 40px rgba(255, 0, 255, 0.5), 0 0 45px rgba(255, 0, 255, 0.5);
+    }
+    100% {
+        text-shadow: 0 0 10px rgba(255, 0, 0, 0.8), 0 0 20px rgba(255, 119, 0, 0.8), 0 0 30px rgba(255, 255, 0, 0.8), 0 0 40px rgba(0, 255, 0, 0.8), 0 0 50px rgba(0, 0, 255, 0.8), 0 0 60px rgba(138, 43, 226, 0.8), 0 0 70px rgba(138, 43, 226, 0.8), 0 0 80px rgba(255, 0, 255, 0.8), 0 0 90px rgba(255, 0, 255, 0.8);
+    }
+}
+
+@media (max-width: 600px) {
+    #countdown {
+        font-size: 36px;
+        padding: 15px;
+    }
+}
