@@ -100,12 +100,13 @@ function updateNotesDisplay() {
     revertColorOfCurrentNote();
     nextNotes.push(generateRandomNote()); // add random note as last index of next notes
     setNextNotesNav(nextNotes.join(" ")); // update next notes nav
-    console.log(nextNotes);
 }
 
 // handle adding note to previous notes array
 function addNoteToPreviousNotes(note) {
     const previousNotes = getPreviousNotes();
+    console.log("previoiusNotes length: " + previousNotes.length);
+    console.log(previousNotes)
     if (previousNotes.length >= 5) { // prevent previous notes from storing more than 5 notes
         previousNotes.shift();
     }
@@ -129,8 +130,18 @@ function getNextNotes() {
 
 function getPreviousNotes() {
     const previousNotesNav = document.querySelector(`.${PREVIOUS_NOTES_CLASS}`);
-    return previousNotesNav.textContent.trim().split(" ");
+    if (previousNotesNav) {
+        // Check if the previous notes navigation element exists
+        const noteText = previousNotesNav.textContent.trim();
+        if (noteText !== "") {
+            // If there are previous notes, split them into an array and return
+            return noteText.split(" ");
+        }
+    }
+    // If there are no previous notes or the navigation element doesn't exist, return an empty array
+    return [];
 }
+
 
 
 function setCurrentNoteNav(note) {
@@ -147,18 +158,36 @@ function setCurrentNoteNav(note) {
 
 
 function setCurrentImgNoteNav(note) {
+    const bassNotes = [
+        'C2', 'Csharp2', 'D2', 'Dsharp2', 'E2', 'F2', 'Fsharp2', 'G2', 'Gsharp2',
+        'A2', 'Asharp2', 'B2', 'C3', 'Csharp3', 'D3', 'Dsharp3', 'E3', 'F3', 'Fsharp3', 'G3', 'Gsharp3',
+        'A3', 'Asharp3', 'B3'
+    ];
+
+
+    const trebleNotes = [
+        'C4', 'Csharp4', 'D4', 'Dsharp4', 'E4', 'F4', 'Fsharp4', 'G4', 'Gsharp4',
+        'A4', 'Asharp4', 'B4', 'C5', 'Csharp5', 'D5', 'Dsharp5', 'E5', 'F5', 'Fsharp5', 'G5', 'Gsharp5',
+        'A5', 'Asharp5', 'B5', 'C6'
+    ];
+
+
+
+
     const currentNoteNav = document.querySelector(`.${CURRENT_NOTE_CLASS}`);
     currentNoteToCompare = note;
     let noteHtml = note.replace('♯', 'sharp');
-    let imgSrc;
+    console.log("noteHTML: " + noteHtml);
+
     if (/\d/.test(noteHtml)) {
-        imgSrc = `img/${noteHtml}note.png`;
-        console.log(imgSrc);
     } else {
-        imgSrc = `img/${noteHtml}4note.png`;
-        console.log(imgSrc);
+        noteHtml = noteHtml + "4"
     }
 
+    let imgSrc = isDarkMode ? `img/notes-white/${noteHtml}note.png` : `img/notes-black/${noteHtml}note.png`;
+
+
+    console.log("imgSRC: " + imgSrc);
 
     // Create a new Image element
     const img = new Image();
@@ -166,12 +195,19 @@ function setCurrentImgNoteNav(note) {
     // Set up event handlers for loading and error
     img.onload = function () {
         // If the image loads successfully, set its source as the innerHTML
-        currentNoteNav.innerHTML = `<nav><img src="${imgSrc}"></img></nav>`;
+        if (bassNotes.includes(noteHtml)) {
+            currentNoteNav.innerHTML = isDarkMode ? `<nav><img src="img/notes-white/empty-staff.png"><img src="${imgSrc}"></img></nav>` : `<nav><img src="img/notes-black/empty-staff.png"><img src="${imgSrc}"></img></nav>`;
+        }
+        if (trebleNotes.includes(noteHtml)) {
+            currentNoteNav.innerHTML = isDarkMode ? `<nav><img src="${imgSrc}"></img><img src="img/notes-white/empty-bass.png"></nav>` : `<nav><img src="${imgSrc}"></img><img src="img/notes-black/empty-bass.png"></nav>`;
+        }
+
     };
 
     img.onerror = function () {
         // If the image fails to load, replace it with the note HTML
         noteHtml = note.replace('♯', '<span class="sharp-symbol">♯</span>');
+        noteHtml = noteHtml.replace(/\d/g, '<span class="octave-symbol">$&</span>');
         currentNoteNav.innerHTML = `<nav>${noteHtml}</nav>`;
     };
 
@@ -185,7 +221,7 @@ function emptyCurrentNoteNav() {
     if (lettersCheckbox.checked) {
         setCurrentNoteNav("");
     } else {
-        currentNoteNav.innerHTML = `<nav><img src="img/empty-staff.png"></img></nav>`;
+        currentNoteNav.innerHTML = isDarkMode ? `<nav><img src="img/notes-white/empty-staff.png"></img><img src="img/notes-white/empty-bass.png"></img></nav>` : `<nav><img src="img/notes-black/empty-staff.png"></img><img src="img/notes-black/empty-bass.png"></img></nav>`;
     }
 }
 
@@ -193,21 +229,37 @@ function emptyCurrentNoteNav() {
 
 function setNextNotesNav(string) {
     const nextNotesNav = document.querySelector(`.${NEXT_NOTES_CLASS}`);
-    if (notesCheckbox.checked) {
-        nextNotesNav.style.display = 'none';
-    } else {
-        nextNotesNav.style.display = 'block';
+    if (nextNotesNav) {
+        const noteHtml = string.replace(/[♯\d]/g, (match) => {
+            if (match === '♯') {
+                return '<span class="sharp-symbol">' + match + '</span>';
+            } else if (/\d/.test(match)) {
+                return '<span class="octave-symbol">' + match + '</span>';
+            }
+            return match;
+        });
+        nextNotesNav.innerHTML = `<nav>${noteHtml}</nav>`;
     }
-    const noteHtml = string.replaceAll('♯', '<span class="sharp-symbol">♯</span>');
-    nextNotesNav.innerHTML = `<nav>${noteHtml}</nav>`;
 }
+
 
 function setPreviousNotesNav(string) {
     const previousNotesNav = document.querySelector(`.${PREVIOUS_NOTES_CLASS}`);
-    const noteWithoutSpaces = string.split(' ').join('');
-    const noteHtml = noteWithoutSpaces.replaceAll('♯', '<span class="sharp-symbol">♯</span>');
-    previousNotesNav.innerHTML = `<nav>${noteHtml}</nav>`;
+    if (previousNotesNav) {
+        // Check if the previous notes navigation element exists
+        const noteHtml = string.replace(/[♯\d]/g, (match) => {
+            if (match === '♯') {
+                return '<span class="sharp-symbol">' + match + '</span>';
+            } else if (/\d/.test(match)) {
+                return '<span class="octave-symbol">' + match + '</span>';
+            }
+            return match;
+        });
+        previousNotesNav.innerHTML = `<nav>${noteHtml}</nav>`;
+    }
 }
+
+
 
 function revertColorOfCurrentNote() {
     const currentNoteNav = document.querySelector(`.${CURRENT_NOTE_CLASS}`);

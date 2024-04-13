@@ -163,6 +163,9 @@ function toggleNoteSelection(note) {
     advancedSelectedNotes = advancedSelectedNotes.filter(selectedNote => selectedNote !== note);
   }
   console.log("zaznaczone nuty:" + advancedSelectedNotes);
+  updateSubmitButton();
+
+
 }
 // initailly generate note buttons 
 populateNoteButtons();
@@ -178,6 +181,7 @@ function advancedSelectAllNotes() {
     advancedSelectedNotes.push(button.value);
   });
   console.log("zaznaczone nuty:" + advancedSelectedNotes);
+  updateSubmitButton();
 }
 
 
@@ -195,6 +199,7 @@ function advancedSelectWholeNotes() {
     }
   });
   console.log("Zaznaczone nuty: " + advancedSelectedNotes);
+  updateSubmitButton();
 }
 
 
@@ -212,6 +217,7 @@ function advancedSelectSharpNotes() {
     }
   });
   console.log("Zaznaczone nuty: " + advancedSelectedNotes);
+  updateSubmitButton();
 }
 
 function advancedUnselectAllNotes() {
@@ -221,4 +227,34 @@ function advancedUnselectAllNotes() {
   noteButtons.forEach(button => {
     button.classList.remove("selected");
   });
+  updateSubmitButton();
 }
+
+// Add event listener to the window for keydown event
+window.addEventListener('keydown', function(event) {
+  // Check if the pressed key is Enter and if the advanced settings window is open
+  if (event.key === 'Enter' && document.getElementById('advancedSettingsWindow').style.display === 'block') {
+      // Close the advanced settings window
+      closeAdvancedSettingsWindow();
+  }
+});
+
+
+function updateSubmitButton() {
+  submitButton.disabled = advancedSelectedNotes.length < 2;
+}
+
+// Add an event listener to the document to handle clicks on any button within the ".instrument-buttons" container
+document.addEventListener('click', function(event) {
+  // Check if the clicked element is a button within the ".instrument-buttons" container
+  if (event.target.matches('.instrument-buttons button')) {
+    updateSubmitButton();
+  }
+});
+
+
+document.addEventListener('click', function(event) {
+  if (event.target.closest('#noteButtonsContainer button')) {
+    updateSubmitButton();
+  }
+});

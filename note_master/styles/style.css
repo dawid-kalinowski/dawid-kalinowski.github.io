@@ -63,14 +63,13 @@ body {
 .current-note nav .sharp-symbol {
     position: absolute;
     top: 0;
-    right: -10px;
     font-size: 70%;
 }
 
 .current-note nav .octave-symbol {
     position: absolute;
     bottom: 0;
-    right: -30px;
+    right: 10px;
     font-size: 60%;
 }
 
@@ -160,11 +159,38 @@ body {
     grid-column: span 2;
 }
 
+.previous-notes .sharp-symbol {
+    position: relative;
+    top: -10px;
+    right: 10px;
+    font-size: 70%;
+}
+
+.previous-notes .octave-symbol {
+    position: relative;
+    top: 10px;
+    left: -10px;
+    font-size: 70%;
+}
+
 .next-notes {
     margin-left: 30px;
     text-align: left;
     font-size: 50px;
     grid-column: span 2;
+}
+
+.next-notes .sharp-symbol {
+    position: relative;
+    top: -10px;
+    font-size: 70%;
+}
+
+.next-notes .octave-symbol {
+    position: relative;
+    top: 10px;
+    left: -5px;
+    font-size: 70%;
 }
 
 .note-button {

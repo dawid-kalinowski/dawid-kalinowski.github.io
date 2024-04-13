@@ -136,7 +136,6 @@ function toggleButtons() {
     const buttons = settingsContainer.querySelectorAll('.menu, .display-notes, .custom-checkbox input, .note-button, #octaveInput');
 
     const rightSectionButtons = document.querySelectorAll('.right-section button');
-
     rightSectionButtons.forEach(button => {
         button.disabled = false;
     });
@@ -147,6 +146,9 @@ function toggleButtons() {
             button.disabled = applyAdvancedCheckbox.checked;
         }
     });
+
+    submitButton.disabled = advancedSelectedNotes.length < 2;
+
 }
 
 function untoggleButtons() {
@@ -168,6 +170,9 @@ function untoggleButtons() {
             }
         }
     });
+    
+    const checkedNotes = Array.from(document.querySelectorAll('input[name="note"]:checked')).map(input => input.value);
+    submitButton.disabled = checkedNotes.length < 2;
 }
 
 
