@@ -1,9 +1,10 @@
-let timer;
+let startTime;
+let pauseTime;
+let timerRunning = false;
 let hours = 0;
 let minutes = 10;
 let seconds = 0;
 let milliseconds = 0;
-let timerRunning = false;
 let showMilliseconds = true;
 
 let initialHours = 0;
@@ -28,83 +29,82 @@ function initializeTimerValues() {
 }
 
 function resetTimer() {
-    if (!timerRunning) {
-        clearInterval(timer);
-        hours = initialHours;
-        minutes = initialMinutes;
-        seconds = initialSeconds;
-        milliseconds = 0;
-        updateTimerDisplay();
-    }
+    timerRunning = false;
+    hours = initialHours;
+    minutes = initialMinutes;
+    seconds = initialSeconds;
+    milliseconds = 0;
+    updateTimerDisplay();
 }
 
 function toggleTimer() {
     if (timerRunning) {
-        stopTimer();
+        pauseTimer();
     } else {
         startTimer();
     }
 }
 
 function startTimer() {
-    if (milliseconds === 0 && seconds === 0 && minutes === 0 && hours === 0) {
-        initializeTimerValues();
+    if (!timerRunning && (hours > 0 || minutes > 0 || seconds > 0 || milliseconds > 0)) {
+        timerRunning = true;
+        if (!pauseTime) {
+            startTime = Date.now();
+        } else {
+            const pausedDuration = Date.now() - pauseTime;
+            startTime += pausedDuration;
+            pauseTime = null;
+        }
+        requestAnimationFrame(updateTimer);
+        document.getElementById("startStopButton").innerText = "Pause";
+        document.getElementById("resetButton").disabled = true;
+        document.getElementById("resetButton").classList.add("disabled");
     }
-    timerRunning = true;
-    document.getElementById("startStopButton").innerText = "Stop";
-    document.getElementById("resetButton").disabled = true;
-    document.getElementById("resetButton").classList.add("disabled");
-    clearInterval(timer);
-    timer = setInterval(updateTimer, 10);
 }
 
-function stopTimer() {
-    clearInterval(timer);
+function pauseTimer() {
     timerRunning = false;
-    document.getElementById("startStopButton").innerText = "Start";
+    pauseTime = Date.now();
+    document.getElementById("startStopButton").innerText = "Resume";
     document.getElementById("resetButton").disabled = false;
     document.getElementById("resetButton").classList.remove("disabled");
 }
 
 function updateTimer() {
-    milliseconds -= 10;
-    if (milliseconds < 0) {
-        milliseconds = 990;
-        seconds--;
-    }
-    if (seconds < 0) {
-        seconds = 59;
-        minutes--;
-    }
-    if (minutes < 0) {
-        minutes = 59;
-        hours--;
-    }
-    if (hours < 0) {
-        resetTimer();
+    if (!timerRunning) return;
+
+    const elapsedTime = Date.now() - startTime;
+    let remainingTime = (initialHours * 3600000) + (initialMinutes * 60000) + (initialSeconds * 1000) - elapsedTime;
+    if (remainingTime < 0) remainingTime = 0;
+
+    hours = Math.floor(remainingTime / 3600000);
+    minutes = Math.floor((remainingTime % 3600000) / 60000);
+    seconds = Math.floor((remainingTime % 60000) / 1000);
+    milliseconds = Math.floor((remainingTime % 1000) / 10);
+
+    updateTimerDisplay();
+
+    if (remainingTime > 0) {
+        requestAnimationFrame(updateTimer);
     } else {
-        updateTimerDisplay();
+        resetTimer();
     }
 }
 
 function updateTimerDisplay() {
     const timerDisplay = document.getElementById("timer");
-    if (showMilliseconds) {
-        timerDisplay.innerText = (hours > 0 ? formatTime(hours) + ":" : "") + formatTime(minutes) + ":" + formatTime(seconds) + "." + formatMilliseconds(milliseconds);
-    } else {
-        timerDisplay.innerText = (hours > 0 ? formatTime(hours) + ":" : "") + formatTime(minutes) + ":" + formatTime(seconds);
-    }
+    timerDisplay.innerText = (hours > 0 ? formatTime(hours) + ":" : "") + formatTime(minutes) + ":" + formatTime(seconds) + (showMilliseconds ? "." + formatMilliseconds(milliseconds) : "");
 }
-
 
 function formatTime(time) {
     return (time < 10 ? "0" + time : time);
 }
 
 function formatMilliseconds(ms) {
-    const msWithLeadingZeros = ms < 100 ? '0' + Math.floor(ms / 10) : Math.floor(ms / 10).toString();
+    const msWithLeadingZeros = ms < 10 ? '0' + ms : ms;
     return msWithLeadingZeros;
 }
+
 
 function openModal() {
     if (!timerRunning) {
