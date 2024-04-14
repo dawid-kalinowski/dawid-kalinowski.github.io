@@ -34,6 +34,7 @@ function resetTimer() {
     minutes = initialMinutes;
     seconds = initialSeconds;
     milliseconds = 0;
+    startTime = null;
     updateTimerDisplay();
 }
 
@@ -48,9 +49,9 @@ function toggleTimer() {
 function startTimer() {
     if (!timerRunning && (hours > 0 || minutes > 0 || seconds > 0 || milliseconds > 0)) {
         timerRunning = true;
-        if (!pauseTime) {
+        if (!startTime) {
             startTime = Date.now();
-        } else {
+        } else if (pauseTime) {
             const pausedDuration = Date.now() - pauseTime;
             startTime += pausedDuration;
             pauseTime = null;
@@ -105,7 +106,6 @@ function formatMilliseconds(ms) {
     return msWithLeadingZeros;
 }
 
-
 function openModal() {
     if (!timerRunning) {
         document.getElementById("myModal").style.display = "block";
@@ -116,6 +116,8 @@ function closeModal() {
     document.getElementById("myModal").style.display = "none";
 }
 
+
+
 function setTime() {
     const newHours = parseInt(document.getElementById("modalHours").value) || 0;
     const newMinutes = parseInt(document.getElementById("modalMinutes").value) || 0;
@@ -124,6 +126,11 @@ function setTime() {
     initialHours = Math.max(0, newHours);
     initialMinutes = Math.max(0, Math.min(newMinutes, 59));
     initialSeconds = Math.max(0, Math.min(newSeconds, 59));
+
+    initializeTimerValues();
+    resetTimer();
+
+
 
     hours = initialHours;
     minutes = initialMinutes;
