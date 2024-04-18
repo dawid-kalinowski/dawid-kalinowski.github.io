@@ -85,6 +85,7 @@ a {
   transition: color 0.3s ease;
 }
 
+
 a:hover {
   color: #0056b3;
 }
@@ -227,6 +228,13 @@ a:hover {
 .main-section {
   margin-left: 1vh;
   margin-right: 1vh;
+}
+
+.main-section a {
+  text-shadow: -1px -1px 0 #000000,  
+  1px -1px 0 #000000,
+  -1px 1px 0 #000000,
+  1px 1px 0 #000000;
 }
 
 
