@@ -5,7 +5,7 @@ let hours = 0;
 let minutes = 10;
 let seconds = 0;
 let milliseconds = 0;
-let showMilliseconds = true;
+let showMilliseconds = false;
 
 let initialHours = 0;
 let initialMinutes = 10;
@@ -57,18 +57,22 @@ function startTimer() {
             pauseTime = null;
         }
         requestAnimationFrame(updateTimer);
-        document.getElementById("startStopButton").innerText = "Pause";
+        document.getElementById("startStopButton").innerText = "Pauza";
         document.getElementById("resetButton").disabled = true;
         document.getElementById("resetButton").classList.add("disabled");
+        document.getElementById("timeButton").disabled = true;
+        document.getElementById("timeButton").classList.add("disabled");
     }
 }
 
 function pauseTimer() {
     timerRunning = false;
     pauseTime = Date.now();
-    document.getElementById("startStopButton").innerText = "Resume";
+    document.getElementById("startStopButton").innerText = "Wznów";
     document.getElementById("resetButton").disabled = false;
     document.getElementById("resetButton").classList.remove("disabled");
+    document.getElementById("timeButton").disabled = false;
+    document.getElementById("timeButton").classList.remove("disabled");
 }
 
 function updateTimer() {
