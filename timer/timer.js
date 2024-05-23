@@ -57,6 +57,7 @@ function startTimer() {
             pauseTime = null;
         }
         requestAnimationFrame(updateTimer);
+        document.getElementById("endMessage").style.display = "none";
         document.getElementById("startStopButton").innerText = "Pauza";
         document.getElementById("resetButton").disabled = true;
         document.getElementById("resetButton").classList.add("disabled");
@@ -92,6 +93,8 @@ function updateTimer() {
     if (remainingTime > 0) {
         requestAnimationFrame(updateTimer);
     } else {
+        document.getElementById("endMessage").style.display = "block";
+        document.getElementById("startStopButton").innerText = "Start";
         resetTimer();
     }
 }

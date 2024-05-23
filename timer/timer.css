@@ -112,9 +112,19 @@ button:hover {
 }
 
 
+
+
 #timer:hover {
     color: #6ad7e4;
     cursor: pointer;
+
+}
+
+#endMessage {
+    display: none;
+    font-size: 8em;
+    color: rgb(255, 0, 0);
+    font-weight: bold;
 }
 
 button#resetButton.disabled {
